@@ -20,11 +20,11 @@ public class Album {
     @ElementCollection
     private Collection<String> comments;
 
-    public Album(String title, String imgUrl, float rating, Collection<Song> songs, String recordLabel, String artist) {
+    public Album(String title, String imgUrl, float rating, String recordLabel, String artist, Song...songs) {
         this.title = title;
         this.imgUrl = imgUrl;
         this.rating = rating;
-        this.songs = songs;
+        this.songs = Arrays.asList(songs);
         this.recordLabel = recordLabel;
         this.artist = artist;
         this.comments = new ArrayList<>();
@@ -54,7 +54,7 @@ public class Album {
         return recordLabel;
     }
 
-    public Collection<Comment> getComments() {
+    public Collection<String> getComments() {
         return comments;
     }
 

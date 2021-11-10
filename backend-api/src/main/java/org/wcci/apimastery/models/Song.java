@@ -64,7 +64,7 @@ public class Song {
         return artist;
     }
 
-    public Collection<Comment> getComments() {
+    public Collection<String> getComments() {
         return comments;
     }
 
