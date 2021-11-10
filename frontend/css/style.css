@@ -1,7 +1,23 @@
 .albumImg{
+    display: flex;
     width: 10rem;
     height: auto;
 }
 body{
+    display: flex;
+    flex-direction: column;
     background-color: aqua;
+    align-items: center;
+}
+.albumView{
+    display: flex;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+}
+li{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
