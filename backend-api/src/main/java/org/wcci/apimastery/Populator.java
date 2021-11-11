@@ -24,7 +24,5 @@ public class Populator implements CommandLineRunner {
         songRepo.save(song1);
         Song song2 = new Song("A Horse Called Golgotha","",5.21f,4f,album1,"Baroness");
         songRepo.save(song2);
-
-
     }
 }

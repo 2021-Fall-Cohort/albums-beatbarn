@@ -1,23 +1,49 @@
 .albumImg{
-    display: flex;
     width: 10rem;
     height: auto;
 }
 body{
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     background-color: aqua;
-    align-items: center;
+    /* align-items: center; */
 }
-.albumView{
+/* .albumView{
     display: flex;
-}
-ul{
+} */
+/* ul{
     display: flex;
     flex-direction: column;
-}
-li{
+} */
+/* li{
     display: flex;
     flex-direction: column;
     text-align: center;
+} */
+
+.songView{
+    display: flex;
+    width: 90%;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.song{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.albumGrid{
+    display: flex;
+   justify-content: space-around;
+}
+
+ul{
+   list-style-type : none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-evenly;
 }
