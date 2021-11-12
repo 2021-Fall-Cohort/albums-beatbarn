@@ -47,3 +47,7 @@ ul{
     display: flex;
     justify-content: space-evenly;
 }
+
+.albumArt{
+    width: 10rem;
+}

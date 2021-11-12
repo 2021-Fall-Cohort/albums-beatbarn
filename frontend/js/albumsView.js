@@ -1,8 +1,13 @@
+import {clearChildren} from "./app.js";
+import {displayAlbumView} from "./albumView.js";
+import {albumsJson} from "./albumsJson.js";
+
+
 function displayAlbumsView(mainContainerEl, albumsJson){
 
-    const albumsTitleEl = document.createElement("h2");
-    albumsTitleEl.classList.add("albumsTitle");
-    albumsTitleEl.innerText = "All BeatBarn Albums";
+    const albumsHeaderEl = document.createElement("h2");
+    albumsHeaderEl.classList.add("albumsHeader");
+    albumsHeaderEl.innerText = "All BeatBarn Albums";
 
     const albumViewEl = document.createElement("div");
     albumViewEl.classList.add("albumView");
@@ -21,19 +26,24 @@ function displayAlbumsView(mainContainerEl, albumsJson){
         const albumArtEl = document.createElement("img");
         albumArtEl.classList.add("albumArt");
 
-        albumsTitleEl.innerText = album.title;
+        albumTitleEl.innerText = album.title;
         albumArtistEl.innerText = album.artist;
-        albumArtEl.innerText = album.imgUrl;
+        albumArtEl.src=album.imgUrl;
         listEl.append(albumTitleEl);
         listEl.append(albumArtistEl);
         listEl.append(albumArtEl);
 
         albumGridEl.append(listEl);
+
+        listEl.addEventListener("click", () => {
+            clearChildren(mainContainerEl);
+            displayAlbumView(mainContainerEl, album, albumsJson);
+        })
     });
 
 
     albumViewEl.append(albumGridEl);
-    albumViewEl.append(albumsTitleEl);
+    albumViewEl.append(albumsHeaderEl);
     mainContainerEl.append(albumViewEl);
 };
 
