@@ -25,7 +25,13 @@ public class Populator implements CommandLineRunner {
         Album album3 = new Album("Perfect Enemy", "/resources/tilian.jpg", 5f, "Vital Records", "Tilian");
         albumRepo.save(album3);
         Album album4 = new Album("Dopesmoker", "/resources/sleep.jpeg", 4f, "TeePee Records", "Sleep");
-        albumRepo.save(album3);
+        albumRepo.save(album4);
+        Album album5 = new Album("Locket", "/resources/locket/jpg", 4.5f, "Phoenix Down Recording", "Crumb");
+        albumRepo.save(album5);
+        Album album6 = new Album("Murder of the Universe", "/resources/kgatlw.jpg", 5f, "Flightless Records", "King Gizzard & the Lizard Wizard");
+        albumRepo.save(album6);
+        Album album7 = new Album("Head Rock", "/resources/jiro.jpg", 5f, "Columbia", "Jiro Inagaki & Soul Media");
+        albumRepo.save(album7);
 
         Song BRsong1 = new Song("Bullhead's Psalm", "https://www.youtube.com/watch?v=3tT0Rr19Kds", 1.20f, 4f, album1, "Baroness");
         songRepo.save(BRsong1);
@@ -106,5 +112,36 @@ public class Populator implements CommandLineRunner {
         Song DSsong1 = new Song("Dopesmoker", "https://www.youtube.com/watch?v=hIw7oeZKpZc", 63.36f, 5f, album4, "Sleep");
         songRepo.save(DSsong1);
         Song DSsong2 = new Song("Holy Mountain", "https://www.youtube.com/watch?v=Q4oq-YE_I-s", 11.36f, 4f, album4, "Sleep");
+
+        Song Lsong1 = new Song("Plants", "https://www.youtube.com/watch?v=ajyBZVSNCiI", 3.11f, 4f, album5, "Crumb");
+        songRepo.save(Lsong1);
+        Song Lsong2 = new Song("Recently Played", "https://www.youtube.com/watch?v=77W8byh7144", 2.00f, 4.5f, album5, "Crumb");
+        songRepo.save(Lsong2);
+        Song Lsong3 = new Song("Thirty-Nine", "https://www.youtube.com/watch?v=5PqAgeA1ZK0", 4.39f, 5f, album5, "Crumb");
+        songRepo.save(Lsong3);
+        Song Lsong4 = new Song("Locket", "https://www.youtube.com/watch?v=BqnG_Ei35JE", 5.18f, 5f, album5, "Crumb");
+        songRepo.save(Lsong4);
+
+        Song MUsong1 = new Song("Alter Me/Altered Beast I-IV", "https://www.youtube.com/watch?v=ZBuWFn5gFE4", 15.23f, 5f, album6, "King Gizzard & the Lizard Wizard");
+        songRepo.save(MUsong1);
+        Song MUsong2 = new Song("The Lord of Lightning vs The Balrog", "https://www.youtube.com/watch?v=Rd3vwwXArMQ", 13.55f, 4f, album6, "King Gizzard & the Lizard Wizard");
+        songRepo.save(MUsong2);
+        Song MUsong3 = new Song("Han-Tyumi and the Murder of the Universe", "https://www.youtube.com/watch?v=4zUPTPlkqDg", 13.02f, 4.5f, album6, "King Gizzard & the Lizard Wizard");
+        songRepo.save(MUsong3);
+
+        Song HRsong1 = new Song("The Vamp", "https://www.youtube.com/watch?v=YuM_f2uITXA", 5.22f, 4f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong1);
+        Song HRsong2 = new Song("Twenty-One", "https://www.youtube.com/watch?v=KMKKEKDhM5k", 5.33f, 4f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong2);
+        Song HRsong3 = new Song("Spoonful", "https://www.youtube.com/watch?v=kB6QGi_Q4nM", 9.18f, 4f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong3);
+        Song HRsong4 = new Song("Back to Rack", "https://www.youtube.com/watch?v=cZNzaZd8MIA", 3.35f, 5f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong4);
+        Song HRsong5 = new Song("High Jack", "https://www.youtube.com/watch?v=cv3TGrdPGug", 4.15f, 5f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong5);
+        Song HRsong6 = new Song("The Ground For Peace", "https://www.youtube.com/watch?v=s4_Givjda3s", 7.43f, 4.5f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong6);
+        Song HRsong7 = new Song("Head Rock", "https://www.youtube.com/watch?v=yUrh1mXMUSs", 4.20f, 3.5f, album7, "Jiro Inagaki & Soul Media");
+        songRepo.save(HRsong7);
     }
 }
