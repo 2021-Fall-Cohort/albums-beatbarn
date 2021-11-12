@@ -9,7 +9,7 @@ import java.util.Collection;
 public class Album {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     private String imgUrl;
     private float rating;
@@ -30,7 +30,7 @@ public class Album {
         this.comments = new ArrayList<>();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
