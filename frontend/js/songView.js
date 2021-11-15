@@ -3,14 +3,14 @@ import { clearChildren } from "./app.js";
 import { displayAlbumsView } from "./albumsView.js";
 import { displayAlbumView } from "./albumView.js";
 
-function displaySongView(mainContainerEl, song, albumsJson){
+function displaySongView(mainContainerEl, song, album, albumsJson){
 
     const songDivEl = document.createElement("div");
     songDivEl.classList.add("songDivEl");
 
     const albumArtEl = document.createElement("img");
     albumArtEl.classList.add("albumArt");
-    albumArtEl.src = song.imgUrl;
+    albumArtEl.src = album.imgUrl;
     const songTitleEl = document.createElement("h2");
     songTitleEl.classList.add("songTitle");
     songTitleEl.innerText = song.title;
@@ -35,6 +35,13 @@ function displaySongView(mainContainerEl, song, albumsJson){
     songDivEl.append(songDurationEl);
     songDivEl.append(playerEl);
     mainContainerEl.append(songDivEl);
+    
+
+    albumArtEl.addEventListener("click", () => {
+        clearChildren(mainContainerEl);
+        displayAlbumView(mainContainerEl, album, albumsJson)
+    })
+
 
     
 }

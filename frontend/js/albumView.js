@@ -52,7 +52,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
 
         songLiEl.addEventListener("click", () => {
             clearChildren(mainContainerEl);
-            displaySongView(mainContainerEl, song, albumsJson);
+            displaySongView(mainContainerEl, song, album, albumsJson);
         })
     })
 };
