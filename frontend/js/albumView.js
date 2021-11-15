@@ -1,5 +1,6 @@
 import {clearChildren} from "./app.js";
 import {displayAlbumsView} from "./albumsView.js";
+import {displaySongView} from "./songView.js";
 
 function displayAlbumView(mainContainerEl, album, albumsJson){
 
@@ -48,6 +49,11 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
         songListEl.append(songLiEl);
         songLiEl.append(songTitleEl);
         songLiEl.append(songDurationEl);
+
+        songLiEl.addEventListener("click", () => {
+            clearChildren(mainContainerEl);
+            displaySongView(mainContainerEl, song, album, albumsJson);
+        })
     })
 };
 
