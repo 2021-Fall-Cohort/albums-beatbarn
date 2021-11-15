@@ -1,7 +1,6 @@
 import {displayAlbumsView} from "/js/albumsView.js";
-import {albumsJson} from "./albumsJson.js";
 import {displayAlbumView} from "./albumView.js";
-console.log(albumsJson);
+
 
 const mainContainerEl = document.querySelector(".mainContainer");
 
@@ -35,8 +34,13 @@ function displayHeader(mainContainerEl){
             <li>Merch</li>
         </ul>
     </header> */}
+fetch("http://localhost:8080/album/")
+.then(res => res.json())
+.then(albumsJson => {
+    displayAlbumsView(mainContainerEl, albumsJson);
+})
+.catch(error => console.error(error));
 
-displayAlbumsView(mainContainerEl, albumsJson);
 
 
 function clearChildren(element) {
