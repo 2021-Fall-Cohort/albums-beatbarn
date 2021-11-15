@@ -2,9 +2,11 @@ import { albumsJson } from "./albumsJson.js";
 import { clearChildren } from "./app.js";
 import { displayAlbumsView } from "./albumsView.js";
 import { displayAlbumView } from "./albumView.js";
+import {displayHeader} from "./app.js";
+
 
 function displaySongView(mainContainerEl, song, album, albumsJson){
-
+    displayHeader(mainContainerEl);
     const songDivEl = document.createElement("div");
     songDivEl.classList.add("songDivEl");
 
@@ -20,6 +22,10 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     const songArtistEl = document.createElement("h3");
     songArtistEl.classList.add("songArtist");
     songArtistEl.innerText = song.artist;
+    const albumTitleEl = document.createElement("h2");
+    albumTitleEl.classList.add("songAlbum");
+    albumTitleEl.innerText = album.title;
+
 
     const songDurationEl = document.createElement("h2");
     songDurationEl.classList.add("songDuration");
@@ -28,6 +34,7 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     playerEl.classList.add("player");
     playerEl.src = song.link;
 
+    songDivEl.append(albumTitleEl);
     songDivEl.append(albumArtEl);
     songDivEl.append(songTitleEl);
     songDivEl.append(songRatingEl);
@@ -39,10 +46,12 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
 
     albumArtEl.addEventListener("click", () => {
         clearChildren(mainContainerEl);
-        displayAlbumView(mainContainerEl, album, albumsJson)
+        displayAlbumView(mainContainerEl, album, albumsJson);
     })
 
-
-    
+    albumTitleEl.addEventListener("click", () => {
+        clearChildren(mainContainerEl);
+        displayAlbumView(mainContainerEl, album, albumsJson);   
+    })
 }
 export {displaySongView}

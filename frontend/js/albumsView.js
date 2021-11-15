@@ -1,10 +1,11 @@
 import {clearChildren} from "./app.js";
 import {displayAlbumView} from "./albumView.js";
 import {albumsJson} from "./albumsJson.js";
+import {displayHeader} from "./app.js";
 
 
 function displayAlbumsView(mainContainerEl, albumsJson){
-
+    displayHeader(mainContainerEl);
     const albumsHeaderEl = document.createElement("h2");
     albumsHeaderEl.classList.add("albumsHeader");
     albumsHeaderEl.innerText = "All BeatBarn Albums";

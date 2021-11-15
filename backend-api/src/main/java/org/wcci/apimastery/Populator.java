@@ -109,7 +109,7 @@ public class Populator implements CommandLineRunner {
         Song PEsong12 = new Song("Dreaming", "https://www.youtube.com/watch?v=OG3YWmhPq7g", 3.53f, 5f, album3, "Tilian");
         songRepo.save(PEsong12);
 
-        Song DSsong1 = new Song("Dopesmoker", "https://www.youtube.com/embed/hIw7oeZKpZc\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen>", 63.36f, 5f, album4, "Sleep");
+        Song DSsong1 = new Song("Dopesmoker", "https://www.youtube.com/embed/hIw7oeZKpZc", 63.36f, 5f, album4, "Sleep");
         songRepo.save(DSsong1);
 
 

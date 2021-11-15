@@ -1,9 +1,11 @@
 import {clearChildren} from "./app.js";
 import {displayAlbumsView} from "./albumsView.js";
 import {displaySongView} from "./songView.js";
+import {displayHeader} from "./app.js";
+
 
 function displayAlbumView(mainContainerEl, album, albumsJson){
-
+    displayHeader(mainContainerEl);
     const albumDivEl = document.createElement("div");
     albumDivEl.classList.add("albumDiv");
     const albumArtEl = document.createElement("img");
