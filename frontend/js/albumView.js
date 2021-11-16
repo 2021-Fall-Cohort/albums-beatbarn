@@ -36,6 +36,12 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     const submitEditEl = document.createElement("button");
     submitEditEl.innerText = "Edit Album";
 
+    const commentBoxEl = document.createElement("input");
+    commentBoxEl.type = "text";
+    commentBoxEl.placeholder = "Enter your comment here";
+    const submitCommentEl = document.createElement("button");
+    submitCommentEl.innerText = "Post Comment";
+
 
     albumDivEl.append(albumArtEl);
     albumDivEl.append(albumArtistEl);
@@ -46,6 +52,8 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumDivEl.append(editAlbumArtistEl);
     albumDivEl.append(editAlbumLabelEl);
     albumDivEl.append(submitEditEl);
+    albumDivEl.append(commentBoxEl);
+    albumDivEl.append(submitCommentEl);
     mainContainerEl.append(albumDivEl);
 
     submitEditEl.addEventListener("click", () => {
@@ -64,6 +72,27 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
         .then(albums => {
             clearChildren(mainContainerEl);
             displayAlbumsView(mainContainerEl, albums);
+        })
+        .catch(err => console.error(err));
+    })
+
+    submitCommentEl.addEventListener("click", () => {
+        
+        const newAlbumJson = {
+            "comments": commentBoxEl.value
+        }
+        fetch(`http://localhost:8080/album/${album.id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+        .then(res => res.json())
+        .then(album => {
+            clearChildren(mainContainerEl);
+            displayAlbumView(mainContainerEl, album);
+
         })
         .catch(err => console.error(err));
     })
@@ -123,10 +152,8 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
                 })
                 .catch(err => console.error(err));
         })
-    
-
-
     })
+
     const newSongDivEl = document.createElement("div");
     newSongDivEl.classList.add("newSongDiv");
     const newSongTitleEl = document.createElement("input");
@@ -152,6 +179,19 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     newSongSubmitEl.classList.add("newSongForm");
     newSongSubmitEl.innerText = "Submit Song"; 
     
+    const commentDiv = document.createElement("div");
+    commentDiv.classList.add("albumCommentDiv");
+    const commentUlEl = document.createElement("ul");
+    commentUlEl.classList.add("commentUl");
+    
+    album.comments.forEach(String => {
+        const commentLiEl = document.createElement("li");
+        commentLiEl.classList.add("commentLi");
+        const commentText = document.createElement("p");
+        commentText.innerText = String;
+        commentLiEl.append(commentText);
+        commentUlEl.append(commentLiEl);
+    })
 
     newSongDivEl.append(newSongTitleEl);
     newSongDivEl.append(newSongArtistEl);
@@ -159,7 +199,9 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     newSongDivEl.append(newSongRatingEl);
     newSongDivEl.append(newSongLinkEl);
     newSongDivEl.append(newSongSubmitEl);
+    commentDiv.append(commentUlEl);
     mainContainerEl.append(newSongDivEl);
+    mainContainerEl.append(commentDiv);
 
     newSongSubmitEl.addEventListener("click", () => {
         const newSongJson = {

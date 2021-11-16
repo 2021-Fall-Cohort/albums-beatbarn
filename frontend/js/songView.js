@@ -68,5 +68,25 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
         clearChildren(mainContainerEl);
         displayAlbumView(mainContainerEl, album, albumsJson);   
     })
+
+    submitSongEditEl.addEventListener("click", () => {
+        song.title = editSongTitleEl.value;
+        song.artist = editSongArtistEl.value;
+        song.duration = editSongDurationEl.value;
+        fetch(`http://localhost:8080/song/`, {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(song)
+        })
+        .then(res => res.json())
+        .then(albums => {
+            clearChildren(mainContainerEl);
+            displayAlbumView(mainContainerEl, album, albumsJson); 
+        })
+        .catch(err => console.error(err));
+    })
+
 }
 export {displaySongView}

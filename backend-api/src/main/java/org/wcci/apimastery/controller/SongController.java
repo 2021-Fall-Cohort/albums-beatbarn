@@ -29,6 +29,15 @@ public class SongController {
         return songRepo.findAll();
     }
 
+    @PutMapping("/")
+    public Album editSong(@RequestBody Song songToEdit, @PathVariable Long id){
+        Album tempAlbum = albumRepo.findById(id).get();
+        if(songToEdit.getId() != null){
+            songRepo.save(songToEdit);
+        }
+        return albumRepo.findById(tempAlbum.getId()).get();
+    }
+
     @DeleteMapping("/{id}")
     public Album deleteSong(@PathVariable Long id) {
         Album tempAlbum = songRepo.findById(id).get().getAlbum();

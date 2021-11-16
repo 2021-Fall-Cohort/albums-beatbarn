@@ -34,6 +34,15 @@ public class AlbumController {
         return albumRepo.findAll();
     }
 
+    @PostMapping("/{id}")
+    public Album addComment(@PathVariable Long id, @RequestBody String newComment){
+        Album tempAlbum = albumRepo.findById(id).get();
+        String comment = newComment;
+        tempAlbum.addComment(comment);
+        albumRepo.save(tempAlbum);
+        return albumRepo.findById(id).get();
+    }
+
     @PutMapping("/")
     public Iterable<Album> editAlbum(@RequestBody Album albumToEdit){
         if(albumToEdit.getId() != null){

@@ -12,7 +12,10 @@ public class Album {
     private Long id;
     private String title;
     private String imgUrl;
-    private float rating;
+    @ElementCollection
+    private Collection<Float> ratings;
+    private Float numOfRatings;
+    private Float avgRating;
     private String artist;
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Song> songs;
@@ -20,14 +23,16 @@ public class Album {
     @ElementCollection
     private Collection<String> comments;
 
-    public Album(String title, String imgUrl, float rating, String recordLabel, String artist, Song...songs) {
+    public Album(String title, String imgUrl, Float numOfRatings, String artist, String recordLabel) {
         this.title = title;
         this.imgUrl = imgUrl;
-        this.rating = rating;
-        this.songs = Arrays.asList(songs);
-        this.recordLabel = recordLabel;
+        this.numOfRatings = numOfRatings;
         this.artist = artist;
+        this.recordLabel = recordLabel;
+        this.ratings = new ArrayList<>();
         this.comments = new ArrayList<>();
+        this.songs = Arrays.asList();
+        this.avgRating = avgRating;
     }
 
     public Long getId() {
@@ -42,8 +47,12 @@ public class Album {
         return imgUrl;
     }
 
-    public float getRating() {
-        return rating;
+    public Collection<Float> getRatings() {
+        return ratings;
+    }
+
+    public float getNumOfRatings() {
+        return numOfRatings;
     }
 
     public Collection<Song> getSongs() {
@@ -65,4 +74,22 @@ public class Album {
     protected Album(){
 
     }
+
+    public void addComment(String comment){
+        comments.add(comment);
+    }
+
+
+//    public Float getAvgRating() {
+//        numOfRatings = ratings.size();
+//        for(int i = 0, i<numOfRatings, i++){
+//
+//        }
+//
+//        return avgRating;
+//    }
+
+
+
+
 }
