@@ -29,6 +29,11 @@ public class SongController {
         return songRepo.findAll();
     }
 
+    @DeleteMapping("/{id}")
+    public Album deleteSong(@PathVariable Long id) {
+        Album tempAlbum = songRepo.findById(id).get().getAlbum();
+        songRepo.deleteById(id);
+        return albumRepo.findById(tempAlbum.getId()).get();
 
-
+    }
 }

@@ -23,24 +23,20 @@ function displayHeader(mainContainerEl, albumsJson){
 
     homeLiEl.addEventListener("click", () => {
         clearChildren(mainContainerEl);
-        displayAlbumsView(mainContainerEl, albumsJson);
+        fetchAlbums();
     })
 };
 
-{/* <header>
-        <ul class="header">
-            <li>Meet the Farmers</li>
-            <li>Mission Statement</li>
-            <li>Merch</li>
-        </ul>
-    </header> */}
-fetch("http://localhost:8080/album/")
-.then(res => res.json())
-.then(albumsJson => {
-    displayAlbumsView(mainContainerEl, albumsJson);
-})
-.catch(error => console.error(error));
+fetchAlbums();
 
+function fetchAlbums(){    
+    fetch("http://localhost:8080/album/")
+    .then(res => res.json())
+    .then(albumsJson => {
+        displayAlbumsView(mainContainerEl, albumsJson);
+    })
+    .catch(error => console.error(error));
+}
 
 
 function clearChildren(element) {

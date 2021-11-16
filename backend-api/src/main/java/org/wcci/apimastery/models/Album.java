@@ -14,7 +14,7 @@ public class Album {
     private String imgUrl;
     private float rating;
     private String artist;
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<Song> songs;
     private String recordLabel;
     @ElementCollection

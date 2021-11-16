@@ -63,6 +63,10 @@ public class Song {
         return album;
     }
 
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
     public String getArtist() {
         return artist;
     }

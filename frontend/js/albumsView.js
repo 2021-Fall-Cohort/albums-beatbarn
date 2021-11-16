@@ -24,6 +24,10 @@ function displayAlbumsView(mainContainerEl, albumsJson){
         albumArtistEl.classList.add("albumArtist");
         const albumArtEl = document.createElement("img");
         albumArtEl.classList.add("albumArt");
+        const albumDeleteEl = document.createElement("button");
+        albumDeleteEl.classList.add("albumDelete");
+        albumDeleteEl.innerText = "Delete";
+
 
         albumTitleEl.innerText = album.title;
         albumArtistEl.innerText = album.artist;
@@ -31,12 +35,26 @@ function displayAlbumsView(mainContainerEl, albumsJson){
         listEl.append(albumTitleEl);
         listEl.append(albumArtistEl);
         listEl.append(albumArtEl);
+        listEl.append(albumDeleteEl);
 
         albumGridEl.append(listEl);
 
         listEl.addEventListener("click", () => {
             clearChildren(mainContainerEl);
             displayAlbumView(mainContainerEl, album, albumsJson);
+        })
+
+        albumDeleteEl.addEventListener("click", () => {
+            console.log(`http://localhost:8080/album/${album.id}`)
+            fetch(`http://localhost:8080/album/${album.id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(albums => {
+                    clearChildren(mainContainerEl);
+                    displayAlbumsView(mainContainerEl, albums);
+                })
+                .catch(err => console.error(err));
         })
     });
 

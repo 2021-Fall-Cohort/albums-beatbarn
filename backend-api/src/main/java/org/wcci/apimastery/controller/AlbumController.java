@@ -34,13 +34,26 @@ public class AlbumController {
         return albumRepo.findAll();
     }
 
-    @PatchMapping("/{id}/song")
-    public Iterable<Song> addSong(@RequestBody Song songToAdd, @PathVariable Long id){
-        Album albumToAddSong = albumRepo.findById(id).get();
-        songToAdd.addAlbum(albumToAddSong);
-
-        songRepo.save(songToAdd);
-        return songRepo.findAll();
+    @PutMapping("/")
+    public Iterable<Album> editAlbum(@RequestBody Album albumToEdit){
+        if(albumToEdit.getId() != null){
+            albumRepo.save(albumToEdit);
+        }
+        return albumRepo.findAll();
     }
 
+    @PatchMapping ("/{id}/song")
+    public Album addSong(@RequestBody Song songToAdd, @PathVariable Long id){
+        Album albumToAddSong = albumRepo.findById(id).get();
+        songToAdd.setAlbum(albumToAddSong);
+
+        songRepo.save(songToAdd);
+
+        return albumRepo.findById(id).get();
+    }
+    @DeleteMapping("/{id}")
+    public Iterable<Album> deleteAlbum(@PathVariable Long id){
+        albumRepo.deleteById(id);
+        return albumRepo.findAll();
+    }
 }

@@ -24,12 +24,49 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumRatingEl.classList.add("albumRating");
     albumRatingEl.innerText = album.rating;
 
+    const editAlbumTitleEl = document.createElement("input");
+    editAlbumTitleEl.type ="text";
+    editAlbumTitleEl.placeholder = "Enter New Album Name";
+    const editAlbumArtistEl = document.createElement("input");
+    editAlbumArtistEl.type ="text";
+    editAlbumArtistEl.placeholder = "Enter New Artist Name";
+    const editAlbumLabelEl = document.createElement("input");
+    editAlbumLabelEl.type = "text";
+    editAlbumLabelEl.placeholder = "Enter New Record Label";
+    const submitEditEl = document.createElement("button");
+    submitEditEl.innerText = "Edit Album";
+
+
     albumDivEl.append(albumArtEl);
     albumDivEl.append(albumArtistEl);
     albumDivEl.append(albumTitleEl);
     albumDivEl.append(recordLabelEl);
     albumDivEl.append(albumRatingEl);
+    albumDivEl.append(editAlbumTitleEl);
+    albumDivEl.append(editAlbumArtistEl);
+    albumDivEl.append(editAlbumLabelEl);
+    albumDivEl.append(submitEditEl);
     mainContainerEl.append(albumDivEl);
+
+    submitEditEl.addEventListener("click", () => {
+        album.title = editAlbumTitleEl.value;
+        album.artist = editAlbumArtistEl.value;
+        album.recordLabel = editAlbumLabelEl.value;
+
+        fetch(`http://localhost:8080/album/`, {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(album)
+        })
+        .then(res => res.json())
+        .then(albums => {
+            clearChildren(mainContainerEl);
+            displayAlbumsView(mainContainerEl, albums);
+        })
+        .catch(err => console.error(err));
+    })
 
     const songListDiv = document.createElement("div");
     songListDiv.classList.add("songDiv");
@@ -47,15 +84,48 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
         const songDurationEl = document.createElement("h4");
         songDurationEl.classList.add("songDuration");
         songDurationEl.innerText = song.duration;
+        const songRatingEl = document.createElement("h4");
+        songRatingEl.innerText = song.rating;
+        const songDeleteEl = document.createElement("button");
+        songDeleteEl.innerText = "Delete";
+
 
         songListEl.append(songLiEl);
         songLiEl.append(songTitleEl);
         songLiEl.append(songDurationEl);
+        songLiEl.append(songRatingEl);
+        songLiEl.append(songDeleteEl);
 
-        songLiEl.addEventListener("click", () => {
+        songTitleEl.addEventListener("click", () => {
             clearChildren(mainContainerEl);
             displaySongView(mainContainerEl, song, album, albumsJson);
         })
+
+        songDurationEl.addEventListener("click", () => {
+            clearChildren(mainContainerEl);
+            displaySongView(mainContainerEl, song, album, albumsJson);
+        })
+
+        songRatingEl.addEventListener("click", () => {
+            clearChildren(mainContainerEl);
+            displaySongView(mainContainerEl, song, album, albumsJson);
+        })
+
+        songDeleteEl.addEventListener("click", ()=> {
+            console.log(`http://localhost:8080/album/song/${song.id}`)
+            fetch(`http://localhost:8080/song/${song.id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(album => {
+                    clearChildren(mainContainerEl);
+                    displayAlbumView(mainContainerEl, album);
+                })
+                .catch(err => console.error(err));
+        })
+    
+
+
     })
     const newSongDivEl = document.createElement("div");
     newSongDivEl.classList.add("newSongDiv");
@@ -109,7 +179,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
             body: JSON.stringify(newSongJson)
         })
         .then(res => res.json())
-        .then(song => {
+        .then(album => {
             clearChildren(mainContainerEl);
             displayAlbumView(mainContainerEl, album);
         })
