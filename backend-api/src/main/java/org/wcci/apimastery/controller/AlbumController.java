@@ -1,6 +1,5 @@
 package org.wcci.apimastery.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.models.Album;
 import org.wcci.apimastery.repository.AlbumRepository;

@@ -41,6 +41,7 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     songDivEl.append(playerEl);
     mainContainerEl.append(songDivEl);
     
+    
 
     albumArtEl.addEventListener("click", () => {
         clearChildren(mainContainerEl);

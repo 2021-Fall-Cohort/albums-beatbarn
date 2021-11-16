@@ -57,6 +57,67 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
             displaySongView(mainContainerEl, song, album, albumsJson);
         })
     })
+    const newSongDivEl = document.createElement("div");
+    newSongDivEl.classList.add("newSongDiv");
+    const newSongTitleEl = document.createElement("input");
+    newSongTitleEl.classList.add("newSongForm");
+    newSongTitleEl.type="text";
+    newSongTitleEl.placeholder= "Enter Song Title";
+    const newSongDurationEl = document.createElement("input");
+    newSongDurationEl.classList.add("newSongForm");
+    newSongDurationEl.type="text";
+    newSongDurationEl.placeholder= "Enter Song Duration";
+    const newSongArtistEl= document.createElement("input");
+    newSongArtistEl.classList.add("newSongForm");
+    newSongArtistEl.type="text";
+    newSongArtistEl.placeholder="Enter Song Artist";
+    const newSongRatingEl = document.createElement("input");
+    newSongRatingEl.classList.add("newSongForm");
+    newSongRatingEl.type = "number";
+    newSongRatingEl.placeholder ="Song Rating 1-5";
+    const newSongLinkEl = document.createElement("input");
+    newSongLinkEl.type = "text";
+    newSongLinkEl.placeholder = "Paste Embed Link";
+    const newSongSumbitEl = document.createElement("button");
+    newSongSumbitEl.classList.add("newSongForm");
+    newSongSumbitEl.innerText = "Submit Song"; 
+    
+
+    newSongDivEl.append(newSongTitleEl);
+    newSongDivEl.append(newSongArtistEl);
+    newSongDivEl.append(newSongDurationEl);
+    newSongDivEl.append(newSongRatingEl);
+    newSongDivEl.append(newSongLinkEl);
+    newSongDivEl.append(newSongSumbitEl);
+    mainContainerEl.append(newSongDivEl);
+
+    submitNewSong.addEventListener("click", () => {
+        const newSongJson = {
+            "title": newSongTitleEl.value,
+            "artist": newSongArtistEl.value,
+            "duration": newSongDurationEl.value,
+            "rating": newSongRatingEl.value,
+            "link": newSongLinkEl.value,
+            
+        }
+        fetch (`http://localhost:8080/album/${album.id}/song`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type' : 'application/json'
+        
+            },
+            body: JSON.stringify(newSongJson)
+        })
+        .then(res => res.json())
+        .then(song => {
+            clearChildren(mainContainerEl);
+            displayAlbumView(mainContainerEl, album);
+        })
+        .catch(error => console.error(error));
+    } )
+
+    
+
 };
 
 export{
