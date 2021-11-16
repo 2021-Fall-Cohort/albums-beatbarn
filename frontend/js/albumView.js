@@ -78,9 +78,9 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     const newSongLinkEl = document.createElement("input");
     newSongLinkEl.type = "text";
     newSongLinkEl.placeholder = "Paste Embed Link";
-    const newSongSumbitEl = document.createElement("button");
-    newSongSumbitEl.classList.add("newSongForm");
-    newSongSumbitEl.innerText = "Submit Song"; 
+    const newSongSubmitEl = document.createElement("button");
+    newSongSubmitEl.classList.add("newSongForm");
+    newSongSubmitEl.innerText = "Submit Song"; 
     
 
     newSongDivEl.append(newSongTitleEl);
@@ -88,10 +88,10 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     newSongDivEl.append(newSongDurationEl);
     newSongDivEl.append(newSongRatingEl);
     newSongDivEl.append(newSongLinkEl);
-    newSongDivEl.append(newSongSumbitEl);
+    newSongDivEl.append(newSongSubmitEl);
     mainContainerEl.append(newSongDivEl);
 
-    submitNewSong.addEventListener("click", () => {
+    newSongSubmitEl.addEventListener("click", () => {
         const newSongJson = {
             "title": newSongTitleEl.value,
             "artist": newSongArtistEl.value,

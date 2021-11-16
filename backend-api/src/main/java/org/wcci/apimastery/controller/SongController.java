@@ -1,12 +1,12 @@
 package org.wcci.apimastery.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.wcci.apimastery.models.Album;
 import org.wcci.apimastery.models.Song;
 import org.wcci.apimastery.repository.AlbumRepository;
 import org.wcci.apimastery.repository.SongRepository;
+
+import java.util.Collection;
 
 @RequestMapping("/song")
 @RestController
@@ -22,4 +22,13 @@ public class SongController {
     public Song retrieveSongById(@PathVariable Long id){
         return songRepo.findById(id).get();
     }
+
+    @PostMapping("/")
+    public Iterable<Song> addSong(@RequestBody Song songToAdd){
+        songRepo.save(songToAdd);
+        return songRepo.findAll();
+    }
+
+
+
 }
