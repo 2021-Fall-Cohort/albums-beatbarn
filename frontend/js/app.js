@@ -4,7 +4,7 @@ import {displayAlbumView} from "./albumView.js";
 
 const mainContainerEl = document.querySelector(".mainContainer");
 
-function displayHeader(mainContainerEl){
+function displayHeader(mainContainerEl, albumsJson){
     const headerEl = document.createElement("header");
     const headerUlEl = document.createElement("ul");
     headerUlEl.classList.add("header");

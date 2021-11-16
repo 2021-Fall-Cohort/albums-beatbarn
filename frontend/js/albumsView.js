@@ -4,7 +4,7 @@ import {displayHeader} from "./app.js";
 
 
 function displayAlbumsView(mainContainerEl, albumsJson){
-    displayHeader(mainContainerEl);
+    displayHeader(mainContainerEl, albumsJson);
     const albumsHeaderEl = document.createElement("h2");
     albumsHeaderEl.classList.add("albumsHeader");
     albumsHeaderEl.innerText = "All BeatBarn Albums";
@@ -13,7 +13,6 @@ function displayAlbumsView(mainContainerEl, albumsJson){
     albumViewEl.classList.add("albumView");
     const albumGridEl = document.createElement("ul");
     albumGridEl.classList.add("albumGrid");
-    
     
 
     albumsJson.forEach(album => {

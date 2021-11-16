@@ -6,7 +6,7 @@ import {displayHeader} from "./app.js";
 
 
 function displaySongView(mainContainerEl, song, album, albumsJson){
-    displayHeader(mainContainerEl);
+    displayHeader(mainContainerEl, albumsJson);
     const songDivEl = document.createElement("div");
     songDivEl.classList.add("songDivEl");
 
@@ -25,8 +25,6 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     const albumTitleEl = document.createElement("h2");
     albumTitleEl.classList.add("songAlbum");
     albumTitleEl.innerText = album.title;
-
-
     const songDurationEl = document.createElement("h2");
     songDurationEl.classList.add("songDuration");
     songRatingEl.innertext = song.rating; 

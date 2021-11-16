@@ -5,7 +5,7 @@ import {displayHeader} from "./app.js";
 
 
 function displayAlbumView(mainContainerEl, album, albumsJson){
-    displayHeader(mainContainerEl);
+    displayHeader(mainContainerEl, albumsJson);
     const albumDivEl = document.createElement("div");
     albumDivEl.classList.add("albumDiv");
     const albumArtEl = document.createElement("img");
