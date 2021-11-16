@@ -32,6 +32,18 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     playerEl.classList.add("player");
     playerEl.src = song.link;
 
+    const editSongTitleEl = document.createElement("input");
+    editSongTitleEl.type = "text";
+    editSongTitleEl.placeholder = "Enter New Title";
+    const editSongArtistEl = document.createElement("input");
+    editSongArtistEl.type = "text";
+    editSongArtistEl.placeholder = "Enter New Artist Name";
+    const editSongDurationEl = document.createElement("input");
+    editSongDurationEl.type = "text";
+    editSongDurationEl.placeholder = "Enter New Song Duration";
+    const submitSongEditEl = document.createElement("button");
+    submitSongEditEl.innerText = "Submit Edits";
+
     songDivEl.append(albumTitleEl);
     songDivEl.append(albumArtEl);
     songDivEl.append(songTitleEl);
@@ -39,6 +51,10 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     songDivEl.append(songArtistEl);
     songDivEl.append(songDurationEl);
     songDivEl.append(playerEl);
+    songDivEl.append(editSongTitleEl);
+    songDivEl.append(editSongArtistEl);
+    songDivEl.append(editSongDurationEl);
+    songDivEl.append(submitSongEditEl);
     mainContainerEl.append(songDivEl);
     
     
