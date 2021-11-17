@@ -77,4 +77,8 @@ public class Song {
 
     protected Song(){
     }
+    public void addSongComment(String comment){
+        comments.add(comment);
+    }
+
 }

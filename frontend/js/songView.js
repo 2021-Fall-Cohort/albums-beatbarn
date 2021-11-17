@@ -58,6 +58,7 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     mainContainerEl.append(songDivEl);
     
     
+    
 
     albumArtEl.addEventListener("click", () => {
         clearChildren(mainContainerEl);
@@ -87,6 +88,50 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
         })
         .catch(err => console.error(err));
     })
+    const songCommentDiv = document.createElement("div");
+    const songCommentBoxEl = document.createElement("input");
+    songCommentBoxEl.type = "text";
+    songCommentBoxEl.placeholder = "Enter your comment here";
+    const submitSongComment = document.createElement("button");
+    submitSongComment.innerText = "Post Comment";
+    const songCommentUlEl = document.createElement("ul");
+    songCommentUlEl.classList.add("songCommentUl");
+    
+    song.comments.forEach(String => {
+        const songCommentLiEl = document.createElement("li");
+        songCommentLiEl.classList.add("songCommentLi");
+        const songCommentText = document.createElement("p");
+        songCommentText.innerText = String;
+        songCommentLiEl.append(songCommentText);
+        songCommentUlEl.append(songCommentLiEl);
+    })
+
+    
+    songCommentDiv.append(songCommentBoxEl);
+    songCommentDiv.append(submitSongComment);
+    songCommentDiv.append(songCommentUlEl);
+    mainContainerEl.append(songCommentDiv);
+
+    submitSongComment.addEventListener("click", () =>{
+        const newSongJson = songCommentBoxEl.value;
+
+        fetch(`http://localhost:8080/song/${song.id}`, {
+            method: 'PATCH',
+            hearders: {
+                'Content-Type': 'application/json'
+            },
+            body: newSongJson
+        })
+        .then(res => res.json())
+        .then(song => {
+            clearChildren(mainContainerEl);
+            displaySongView(mainContainerEl, song, album, albumsJson);
+
+        })
+        .catch(err => console.error(err));
+            
+        
+     })
 
 }
 export {displaySongView}

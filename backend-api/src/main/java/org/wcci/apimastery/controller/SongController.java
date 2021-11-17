@@ -37,6 +37,14 @@ public class SongController {
         }
         return albumRepo.findById(tempAlbum.getId()).get();
     }
+    @PatchMapping("/{id}")
+    public Song addCommentToSong(@PathVariable Long id, @RequestBody String newSongJson){
+        Song tempSong = songRepo.findById(id).get();
+        String comment = newSongJson;
+        tempSong.addSongComment(comment);
+        songRepo.save(tempSong);
+        return songRepo.findById(id).get();
+    }
 
     @DeleteMapping("/{id}")
     public Album deleteSong(@PathVariable Long id) {
