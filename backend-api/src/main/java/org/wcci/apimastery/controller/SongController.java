@@ -46,6 +46,15 @@ public class SongController {
         return songRepo.findById(id).get();
     }
 
+    @PatchMapping("/rating/{id}")
+    public Song addRatingToSong(@PathVariable Long id, @RequestBody Float newSongJson){
+        Song tempSong = songRepo.findById(id).get();
+        Float rating = newSongJson;
+        tempSong.addRating(rating);
+        songRepo.save(tempSong);
+        return songRepo.findById(id).get();
+    }
+
     @DeleteMapping("/{id}")
     public Album deleteSong(@PathVariable Long id) {
         Album tempAlbum = songRepo.findById(id).get().getAlbum();

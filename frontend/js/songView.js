@@ -27,7 +27,16 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     albumTitleEl.innerText = album.title;
     const songDurationEl = document.createElement("h2");
     songDurationEl.classList.add("songDuration");
-    songRatingEl.innertext = song.rating; 
+    songRatingEl.innerText = song.avgRating; 
+
+    const newRatingEl = document.createElement("input");
+    newRatingEl.classList.add("newRating");
+    newRatingEl.type = "number";
+    newRatingEl.placeholder = "Rate this song 1-5";
+    const submitNewRatingEl = document.createElement("button");
+    submitNewRatingEl.classList.add("submitNewRating");
+    submitNewRatingEl.innerText = "Submit Rating";
+
     const playerEl = document.createElement("iframe");
     playerEl.classList.add("player");
     playerEl.src = song.link;
@@ -48,6 +57,8 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     songDivEl.append(albumArtEl);
     songDivEl.append(songTitleEl);
     songDivEl.append(songRatingEl);
+    songDivEl.append(newRatingEl);
+    songDivEl.append(submitNewRatingEl);
     songDivEl.append(songArtistEl);
     songDivEl.append(songDurationEl);
     songDivEl.append(playerEl);
@@ -58,7 +69,24 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
     mainContainerEl.append(songDivEl);
     
     
-    
+    submitNewRatingEl.addEventListener("click", () => {
+        const newSongJson = newRatingEl.value;
+
+        fetch(`http://localhost:8080/song/rating/${song.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: newSongJson
+        })
+        .then(res => res.json())
+        .then(song => {
+            clearChildren(mainContainerEl);
+            displaySongView(mainContainerEl, song, album, albumsJson);
+
+        })
+        .catch(err => console.error(err));
+    })
 
     albumArtEl.addEventListener("click", () => {
         clearChildren(mainContainerEl);
@@ -117,7 +145,7 @@ function displaySongView(mainContainerEl, song, album, albumsJson){
 
         fetch(`http://localhost:8080/song/${song.id}`, {
             method: 'PATCH',
-            hearders: {
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: newSongJson

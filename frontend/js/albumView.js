@@ -22,7 +22,14 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     recordLabelEl.innerText = album.recordLabel;
     const albumRatingEl = document.createElement("h2");
     albumRatingEl.classList.add("albumRating");
-    albumRatingEl.innerText = album.rating;
+    albumRatingEl.innerText = album.avgRating;
+    const newRatingEl = document.createElement("input");
+    newRatingEl.classList.add("newRating");
+    newRatingEl.type = "number";
+    newRatingEl.placeholder = "Enter rating 1-5";
+    const submitNewAlbumRatingEl = document.createElement("button");
+    submitNewAlbumRatingEl.classList.add("submitNewRating");
+    submitNewAlbumRatingEl.innerText = "Submit Rating";
 
     const editAlbumTitleEl = document.createElement("input");
     editAlbumTitleEl.type ="text";
@@ -48,6 +55,8 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumDivEl.append(albumTitleEl);
     albumDivEl.append(recordLabelEl);
     albumDivEl.append(albumRatingEl);
+    albumDivEl.append(newRatingEl);
+    albumDivEl.append(submitNewAlbumRatingEl);
     albumDivEl.append(editAlbumTitleEl);
     albumDivEl.append(editAlbumArtistEl);
     albumDivEl.append(editAlbumLabelEl);
@@ -55,6 +64,25 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumDivEl.append(commentBoxEl);
     albumDivEl.append(submitCommentEl);
     mainContainerEl.append(albumDivEl);
+
+    submitNewAlbumRatingEl.addEventListener("click", ()=> {
+        const newAlbumJson = newRatingEl.value;
+
+        fetch(`http://localhost:8080/album/rating/${album.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: newAlbumJson
+        })
+        .then(res => res.json())
+        .then(album => {
+            clearChildren(mainContainerEl);
+            displayAlbumView(mainContainerEl, album, albumsJson);
+
+        })
+        .catch(err => console.error(err));
+    })
 
     submitEditEl.addEventListener("click", () => {
         album.title = editAlbumTitleEl.value;
@@ -114,7 +142,8 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
         songDurationEl.classList.add("songDuration");
         songDurationEl.innerText = song.duration;
         const songRatingEl = document.createElement("h4");
-        songRatingEl.innerText = song.rating;
+        songRatingEl.innerText = song.avgRating;
+       
         const songDeleteEl = document.createElement("button");
         songDeleteEl.innerText = "Delete";
 

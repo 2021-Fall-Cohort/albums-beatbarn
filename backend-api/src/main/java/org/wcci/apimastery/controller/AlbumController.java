@@ -60,6 +60,16 @@ public class AlbumController {
 
         return albumRepo.findById(id).get();
     }
+
+    @PatchMapping("/rating/{id}")
+    public Album addRatingToAlbum(@PathVariable Long id, @RequestBody Float newAlbumJson){
+        Album tempAlbum = albumRepo.findById(id).get();
+        Float rating = newAlbumJson;
+        tempAlbum.addRating(rating);
+        albumRepo.save(tempAlbum);
+        return albumRepo.findById(id).get();
+    }
+
     @DeleteMapping("/{id}")
     public Iterable<Album> deleteAlbum(@PathVariable Long id){
         albumRepo.deleteById(id);

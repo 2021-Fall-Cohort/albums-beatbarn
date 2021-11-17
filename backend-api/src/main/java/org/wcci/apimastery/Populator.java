@@ -18,17 +18,17 @@ public class Populator implements CommandLineRunner {
     }
     @Override
     public void run(String... args) throws Exception{
-        Album album1 = new Album("Blue Record","/resources/blueRecord.jpg",0f,"Relapse Records","Baroness");
+        Album album1 = new Album("Blue Record","/resources/blueRecord.jpg",5f,"Relapse Records","Baroness");
         albumRepo.save(album1);
-        Album album2 = new Album("Dark as Night", "/resources/nahko.jpg", 0f, "Ten to Two Records", "Nahko and Medicine for the People");
+        Album album2 = new Album("Dark as Night", "/resources/nahko.jpg", 5f, "Ten to Two Records", "Nahko and Medicine for the People");
         albumRepo.save(album2);
-        Album album3 = new Album("Perfect Enemy", "/resources/tilian.jpg", 0f, "Vital Records", "Tilian");
+        Album album3 = new Album("Perfect Enemy", "/resources/tilian.jpg", 5f, "Vital Records", "Tilian");
         albumRepo.save(album3);
-        Album album4 = new Album("Dopesmoker", "/resources/sleep.jpeg", 0f, "TeePee Records", "Sleep");
+        Album album4 = new Album("Dopesmoker", "/resources/sleep.jpeg", 5f, "TeePee Records", "Sleep");
         albumRepo.save(album4);
-        Album album5 = new Album("Locket", "/resources/locket.jpg", 0f, "Phoenix Down Recording", "Crumb");
+        Album album5 = new Album("Locket", "/resources/locket.jpg", 5f, "Phoenix Down Recording", "Crumb");
         albumRepo.save(album5);
-        Album album6 = new Album("Murder of the Universe", "/resources/kgatlw.jpg", 0f, "Flightless Records", "King Gizzard & the Lizard Wizard");
+        Album album6 = new Album("Murder of the Universe", "/resources/kgatlw.jpg", 4f, "Flightless Records", "King Gizzard & the Lizard Wizard");
         albumRepo.save(album6);
         Album album7 = new Album("Head Rock", "/resources/jiro.jpg", 5f, "Columbia", "Jiro Inagaki & Soul Media");
         albumRepo.save(album7);

@@ -15,28 +15,25 @@ public class Song {
     private String title;
     private String link;
     private float duration;
-    private float rating;
+    @ElementCollection
+    private Collection<Float> ratings;
+    private Float avgRating;
     private String artist;
     @ElementCollection
     private Collection<String> comments;
-
-
     @ManyToOne
     @JsonIgnore
     private Album album;
 
-
-
-
-
-    public Song(String title, String link, float duration, float rating, Album album, String artist) {
+    public Song(String title, String link, float duration, Float initialRating, Album album, String artist) {
         this.title = title;
         this.link = link;
         this.duration = duration;
-        this.rating = rating;
+        this.ratings = new ArrayList<>();
         this.album = album;
         this.artist = artist;
         this.comments = new ArrayList<>();
+        addRating(initialRating);
     }
 
     public Long getId() {
@@ -53,10 +50,6 @@ public class Song {
 
     public float getDuration() {
         return duration;
-    }
-
-    public float getRating() {
-        return rating;
     }
 
     public Album getAlbum() {
@@ -79,6 +72,25 @@ public class Song {
     }
     public void addSongComment(String comment){
         comments.add(comment);
+    }
+
+    public Collection<Float> getRatings() {
+        return ratings;
+    }
+
+    public Float getAvgRating() {
+        return avgRating;
+    }
+
+    public void addRating(Float rating){
+        rating = Math.min(5, rating);
+        rating = Math.max(1, rating);
+        ratings.add(rating);
+        float total = 0;
+        for (float currentRating: ratings) {
+            total += currentRating;
+        }
+        avgRating = total/ratings.size();
     }
 
 }
