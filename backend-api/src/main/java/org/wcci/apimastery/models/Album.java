@@ -14,7 +14,6 @@ public class Album {
     private String imgUrl;
     @ElementCollection
     private Collection<Float> ratings;
-    private Float numOfRatings;
     private Float avgRating;
     private String artist;
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -23,16 +22,17 @@ public class Album {
     @ElementCollection
     private Collection<String> comments;
 
-    public Album(String title, String imgUrl, Float numOfRatings, String artist, String recordLabel) {
+    public Album(String title, String imgUrl, Float initialRating,String artist, String recordLabel) {
         this.title = title;
         this.imgUrl = imgUrl;
-        this.numOfRatings = numOfRatings;
         this.artist = artist;
         this.recordLabel = recordLabel;
         this.ratings = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.songs = Arrays.asList();
-        this.avgRating = avgRating;
+     /*   this.avgRating = initialRating;
+        this.ratings.add(initialRating);*/
+        addRating(initialRating);
     }
 
     public Long getId() {
@@ -49,10 +49,6 @@ public class Album {
 
     public Collection<Float> getRatings() {
         return ratings;
-    }
-
-    public float getNumOfRatings() {
-        return numOfRatings;
     }
 
     public Collection<Song> getSongs() {
@@ -75,19 +71,24 @@ public class Album {
 
     }
 
+    public Float getAvgRating() {
+        return avgRating;
+    }
+
     public void addComment(String comment){
         comments.add(comment);
     }
 
-
-//    public Float getAvgRating() {
-//        numOfRatings = ratings.size();
-//        for(int i = 0, i<numOfRatings, i++){
-//
-//        }
-//
-//        return avgRating;
-//    }
+    public void addRating(Float rating){
+        rating = Math.min(5, rating);
+        rating = Math.max(1, rating);
+        ratings.add(rating);
+        float total = 0;
+        for (float currentRating: ratings) {
+            total += currentRating;
+        }
+        avgRating = total/ratings.size();
+    }
 
 
 
