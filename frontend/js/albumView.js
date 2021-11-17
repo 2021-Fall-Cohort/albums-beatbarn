@@ -49,20 +49,26 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     const submitCommentEl = document.createElement("button");
     submitCommentEl.innerText = "Post Comment";
 
+    const albumInfoDivEl = document.createElement("almubInfoDiv")
+    albumInfoDivEl.append(albumArtEl);
+    albumInfoDivEl.append(albumArtistEl);
+    albumInfoDivEl.append(albumTitleEl);
+    albumInfoDivEl.append(recordLabelEl);
+    
+    albumDivEl.append(albumInfoDivEl)
 
-    albumDivEl.append(albumArtEl);
-    albumDivEl.append(albumArtistEl);
-    albumDivEl.append(albumTitleEl);
-    albumDivEl.append(recordLabelEl);
-    albumDivEl.append(albumRatingEl);
-    albumDivEl.append(newRatingEl);
-    albumDivEl.append(submitNewAlbumRatingEl);
-    albumDivEl.append(editAlbumTitleEl);
-    albumDivEl.append(editAlbumArtistEl);
-    albumDivEl.append(editAlbumLabelEl);
-    albumDivEl.append(submitEditEl);
-    albumDivEl.append(commentBoxEl);
-    albumDivEl.append(submitCommentEl);
+    const albumFormDivEl = document.createElement("albumFormDivEl")
+    albumFormDivEl.append(albumRatingEl);
+    albumFormDivEl.append(newRatingEl);
+    albumFormDivEl.append(submitNewAlbumRatingEl);
+    albumFormDivEl.append(editAlbumTitleEl);
+    albumFormDivEl.append(editAlbumArtistEl);
+    albumFormDivEl.append(editAlbumLabelEl);
+    albumFormDivEl.append(submitEditEl);
+    albumFormDivEl.append(commentBoxEl);
+    albumFormDivEl.append(submitCommentEl);
+    albumDivEl.append(albumFormDivEl);
+    
     mainContainerEl.append(albumDivEl);
 
     submitNewAlbumRatingEl.addEventListener("click", ()=> {
