@@ -17,22 +17,26 @@ function displayAlbumsView(mainContainerEl, albumsJson){
     albumsJson.forEach(album => {
         const listEl = document.createElement("li");
         listEl.classList.add("albumList");
+        const liHeaderDiv = document.createElement("div");
+        liHeaderDiv.classList.add("liHeaderDiv");
+        const albumsArtistEl = document.createElement("h2");
+        albumsArtistEl.classList.add("albumsViewArtist");
+        albumsArtistEl.innerText = album.artist;
         const albumTitleEl = document.createElement("h3");
-        albumTitleEl.classList.add("albumTitle");
-        const albumArtistEl = document.createElement("h4");
-        albumArtistEl.classList.add("albumArtist");
+        albumTitleEl.classList.add("albumsTitle");
         const albumArtEl = document.createElement("img");
-        albumArtEl.classList.add("albumArt");
+        albumArtEl.classList.add("albumsArt");
         const albumDeleteEl = document.createElement("button");
         albumDeleteEl.classList.add("albumDelete");
         albumDeleteEl.innerText = "Delete";
 
 
         albumTitleEl.innerText = album.title;
-        albumArtistEl.innerText = album.artist;
-        albumArtEl.src=album.imgUrl;
-        listEl.append(albumTitleEl);
-        listEl.append(albumArtistEl);
+        albumArtEl.src = album.imgUrl;
+        liHeaderDiv.append(albumsArtistEl);
+        liHeaderDiv.append(albumTitleEl);
+        
+        listEl.append(liHeaderDiv);
         listEl.append(albumArtEl);
         listEl.append(albumDeleteEl);
 
@@ -62,7 +66,7 @@ function displayAlbumsView(mainContainerEl, albumsJson){
     mainContainerEl.append(albumViewEl);
 
     const newAlbumDiv = document.createElement("div");
-    newAlbumDiv.classList.add("newAlbum");
+    newAlbumDiv.classList.add("newAlbumDiv");
     const newAlbumTitle = document.createElement("input");
     newAlbumTitle.type = "text";
     newAlbumTitle.placeholder = "Enter Album Title";
@@ -87,7 +91,7 @@ function displayAlbumsView(mainContainerEl, albumsJson){
     newAlbumDiv.append(newAlbumLabel);
     newAlbumDiv.append(newAlbumRating);
     newAlbumDiv.append(submitNewAlbum);
-    mainContainerEl.append(newAlbumDiv);
+    albumViewEl.append(newAlbumDiv);
 
 submitNewAlbum.addEventListener("click", () => {
     const newAlbumJson = {

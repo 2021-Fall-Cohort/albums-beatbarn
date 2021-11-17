@@ -1,15 +1,70 @@
-body{
-    background-color: #496951;
+
+
+.albumView{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aqua;
 }
 
-.albumArt{
-    width: 15rem;
+.albumsArt{
+    width: 25rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-bottom: 0rem;
 }
 .albumGrid{
-    grid-template-columns: repeat(auto-fit, minmax(250px, 650px));
-    grid-gap: 1.5rem;
-    /* background:cyan; */
+    width: fit-content;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 50% 50%;
     align-items: center;
-    padding-left:5%;
-    /* width: fit-content; */
+    justify-items: center;
+    grid-gap: 4rem;
 }
+
+.albumList{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #AB3428;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.albumList:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.liHeaderDiv{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.albumsViewArtist{
+    margin: .5rem;
+    font-size: 1.4rem;
+    font-family: 'Special Elite', cursive;
+}
+
+.albumsTitle{
+    margin: .25rem;
+    font-family: 'Special Elite', cursive;
+}
+
+.albumDelete{
+    background-color: #8cc5de;
+    margin: .5rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    font-family: 'Special Elite', cursive;
+    border-radius: 10rem;
+    
+}
+
