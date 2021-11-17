@@ -22,7 +22,7 @@ public class Album {
     @ElementCollection
     private Collection<String> comments;
 
-    public Album(String title, String imgUrl, Float initialRating,String artist, String recordLabel) {
+    public Album(String title, String imgUrl, Float initialRating, String recordLabel, String artist) {
         this.title = title;
         this.imgUrl = imgUrl;
         this.artist = artist;
