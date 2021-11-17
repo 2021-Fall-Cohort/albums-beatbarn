@@ -78,9 +78,8 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
 
     submitCommentEl.addEventListener("click", () => {
         
-        const newAlbumJson = {
-            "comments": commentBoxEl.value
-        }
+        const newAlbumJson = commentBoxEl.value;
+            
         fetch(`http://localhost:8080/album/${album.id}`, {
             method: 'POST',
             headers: {
