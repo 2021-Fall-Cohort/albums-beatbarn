@@ -2,7 +2,6 @@ import {clearChildren} from "./app.js";
 import {displayAlbumView} from "./albumView.js";
 import {displayHeader} from "./app.js";
 
-
 function displayAlbumsView(mainContainerEl, albumsJson){
     displayHeader(mainContainerEl, albumsJson);
     const albumsHeaderEl = document.createElement("h2");
@@ -58,9 +57,8 @@ function displayAlbumsView(mainContainerEl, albumsJson){
         })
     });
 
-
-    albumViewEl.append(albumGridEl);
     albumViewEl.append(albumsHeaderEl);
+    albumViewEl.append(albumGridEl);
     mainContainerEl.append(albumViewEl);
 
     const newAlbumDiv = document.createElement("div");

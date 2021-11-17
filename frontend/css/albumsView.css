@@ -1,0 +1,15 @@
+body{
+    background-color: #496951;
+}
+
+.albumArt{
+    width: 15rem;
+}
+.albumGrid{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 650px));
+    grid-gap: 1.5rem;
+    /* background:cyan; */
+    align-items: center;
+    padding-left:5%;
+    /* width: fit-content; */
+}
