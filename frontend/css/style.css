@@ -2,24 +2,6 @@
     width: 10rem;
     height: auto;
 }
-body{
-    /* display: flex;
-    flex-direction: column; */
-    background-color: aqua;
-    /* align-items: center; */
-}
-/* .albumView{
-    display: flex;
-} */
-/* ul{
-    display: flex;
-    flex-direction: column;
-} */
-/* li{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-} */
 
 .songView{
     display: flex;
@@ -34,10 +16,7 @@ body{
     width: 50%;
 }
 
-.albumGrid{
-    display: flex;
-   justify-content: space-around;
-}
+
 
 ul{
    list-style-type : none;
@@ -48,6 +27,3 @@ ul{
     justify-content: space-evenly;
 }
 
-.albumArt{
-    width: 10rem;
-}
