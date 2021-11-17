@@ -1,0 +1,65 @@
+.albumDiv {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.albumArt {
+
+}
+
+.albumArtist {
+
+}
+
+.albumTitle {
+
+}
+
+.recordLabel {
+
+}
+
+.albumRating {
+
+}
+
+.newRating {
+
+}
+
+.submitNewRating {
+
+}
+
+.songDiv {
+
+}
+
+.songList {
+
+}
+
+.songDuration {
+
+}
+
+.newSongDiv {
+
+}
+
+.newSongForm {
+
+}
+
+.albumCommentDiv {
+
+}
+
+.commentUl {
+
+}
+
+.commentLi {
+
+}
