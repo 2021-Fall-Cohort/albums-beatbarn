@@ -4,9 +4,21 @@ import {displayHeader} from "./app.js";
 
 function displayAlbumsView(mainContainerEl, albumsJson){
     displayHeader(mainContainerEl, albumsJson);
+    const mainHeaderDiv = document.createElement("div");
+    mainHeaderDiv.classList.add("mainHeaderDiv");
+    const cornL = document.createElement("img");
+    cornL.src = "/resources/cornL.png";
+    cornL.classList.add("cornPng");
+    const cornR = document.createElement("img");
+    cornR.src = "/resources/cornR.png";
+    cornR.classList.add("cornPng");
     const albumsHeaderEl = document.createElement("h2");
     albumsHeaderEl.classList.add("albumsHeader");
-    albumsHeaderEl.innerText = "All BeatBarn Albums";
+    albumsHeaderEl.innerText = "Welcome to the BeatBarn";
+
+    mainHeaderDiv.append(cornL);
+    mainHeaderDiv.append(albumsHeaderEl);
+    mainHeaderDiv.append(cornR);
 
     const albumViewEl = document.createElement("div");
     albumViewEl.classList.add("albumView");
@@ -61,7 +73,7 @@ function displayAlbumsView(mainContainerEl, albumsJson){
         })
     });
 
-    albumViewEl.append(albumsHeaderEl);
+    albumViewEl.append(mainHeaderDiv);
     albumViewEl.append(albumGridEl);
     mainContainerEl.append(albumViewEl);
 
