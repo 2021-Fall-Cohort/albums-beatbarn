@@ -1,19 +1,40 @@
+body{
+    background-color: aqua;
+}
 .albumDiv {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 
 }
 .newRating{
     display: flex;
-    max-width: 20%;
+    max-width: 20rem;
 }
 
 .singleAlbumArt {
     display: flex;
     align-items: center;
-    max-height: 25%;
-    max-width: 25%;
+    height: 19rem;
+}
+.albumInfoDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-bottom: 0rem;
+    background-color: coral;
+    font-family: 'Special Elite', cursive;
+    
+}
+.albumFormDiv{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
 
 }
 
@@ -47,18 +68,23 @@
 
 .songList {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: auto;
+    align-content: center;
 
 }
 .songLi {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
     align-items: center;
     border: 15px;
     border-color: darkgoldenrod;
+    justify-content: flex-end;
+    background-color: rgb(73, 105, 92);
+    
 }
 
 .songDuration {

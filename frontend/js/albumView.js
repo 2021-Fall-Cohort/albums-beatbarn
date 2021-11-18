@@ -50,14 +50,17 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     submitCommentEl.innerText = "Post Comment";
 
     const albumInfoDivEl = document.createElement("almubInfoDiv")
-    albumInfoDivEl.append(albumArtEl);
+    albumInfoDivEl.classList.add("albumInfoDiv");
     albumInfoDivEl.append(albumArtistEl);
     albumInfoDivEl.append(albumTitleEl);
+    albumInfoDivEl.append(albumArtEl);
     albumInfoDivEl.append(recordLabelEl);
-    
     albumDivEl.append(albumInfoDivEl)
 
+   
+
     const albumFormDivEl = document.createElement("albumFormDivEl")
+    albumFormDivEl.classList.add("albumFormDiv")
     albumFormDivEl.append(albumRatingEl);
     albumFormDivEl.append(newRatingEl);
     albumFormDivEl.append(submitNewAlbumRatingEl);
@@ -68,7 +71,11 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumFormDivEl.append(commentBoxEl);
     albumFormDivEl.append(submitCommentEl);
     albumDivEl.append(albumFormDivEl);
-    
+     
+    const cowArtEl =document.createElement("img")
+    cowArtEl.classList.add("cowArt")
+    cowArtEl.src = "resources\funcow1.png";
+    cowArtEl.append(albumDivEl)
     mainContainerEl.append(albumDivEl);
 
     submitNewAlbumRatingEl.addEventListener("click", ()=> {
