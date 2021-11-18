@@ -75,27 +75,51 @@ function displayAlbumsView(mainContainerEl, albumsJson){
 
     albumViewEl.append(mainHeaderDiv);
     albumViewEl.append(albumGridEl);
-    mainContainerEl.append(albumViewEl);
+   
+const newAlbumButtonEl = document.createElement("button");
+newAlbumButtonEl.innerText = "Add New Album";
+newAlbumButtonEl.setAttribute('id', 'newAlbumButton');
+const modalDiv = document.createElement("div");
+modalDiv.classList.add("modal");
+modalDiv.setAttribute('id', 'myModal');
+const modalContentDiv = document.createElement("div");
+modalContentDiv.classList.add("modalContentDiv");
+const modalHeaderDiv = document.createElement("div");
+modalHeaderDiv.classList.add("modalHeaderDiv");
+const modalClose = document.createElement("span");
+modalClose.classList.add("close");
+modalClose.innerHTML = "&times;";
+const modalHeader = document.createElement("h2");
+modalHeader.classList.add("modalHeader");
+modalHeader.innerText = "Add New Album to the Barn!";
+const modalBodyDiv = document.createElement("div");
+modalBodyDiv.classList.add("modalBodyDiv");
+const newAlbumDiv = document.createElement("div");
 
-    const newAlbumDiv = document.createElement("div");
     newAlbumDiv.classList.add("newAlbumDiv");
     const newAlbumTitle = document.createElement("input");
     newAlbumTitle.type = "text";
     newAlbumTitle.placeholder = "Enter Album Title";
+    newAlbumTitle.classList.add("newAlbumField");
     const newAlbumArtist = document.createElement("input");
     newAlbumArtist.type ="text";
     newAlbumArtist.placeholder = "Enter Album Artist";
+    newAlbumArtist.classList.add("newAlbumField");
     const newAlbumImage = document.createElement("input");
     newAlbumImage.type = "url";
     newAlbumImage.placeholder = "Enter Album Art URL";
+    newAlbumImage.classList.add("newAlbumField");
     const newAlbumLabel = document.createElement("input");
     newAlbumLabel.type = "text";
     newAlbumLabel.placeholder = "Enter Album Record Label";
+    newAlbumLabel.classList.add("newAlbumField");
     const newAlbumRating = document.createElement("input");
     newAlbumRating.type = "number";
     newAlbumRating.placeholder = "Enter Album Rating 1-5";
+    newAlbumRating.setAttribute('id', 'newAlbumField');
     const submitNewAlbum = document.createElement("button");
     submitNewAlbum.innerText = "Submit New Album";
+    submitNewAlbum.classList.add("submitNewAlbumBtn");
     
     newAlbumDiv.append(newAlbumTitle);
     newAlbumDiv.append(newAlbumArtist);
@@ -103,31 +127,64 @@ function displayAlbumsView(mainContainerEl, albumsJson){
     newAlbumDiv.append(newAlbumLabel);
     newAlbumDiv.append(newAlbumRating);
     newAlbumDiv.append(submitNewAlbum);
-    albumViewEl.append(newAlbumDiv);
 
-submitNewAlbum.addEventListener("click", () => {
-    const newAlbumJson = {
-        "title": newAlbumTitle.value,
-        "artist": newAlbumArtist.value,
-        "imgUrl": newAlbumImage.value,
-        "recordLabel": newAlbumLabel.value,
-        "songs": [],
-        "rating": newAlbumRating.value
-    }
-    fetch("http://localhost:8080/album/", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/Json'
-        },
-        body: JSON.stringify(newAlbumJson)
+    modalBodyDiv.append(newAlbumDiv);
+
+    
+    modalHeaderDiv.append(modalHeader);
+    modalDiv.append(modalClose);
+    modalDiv.append(modalHeaderDiv);
+    modalContentDiv.append(modalBodyDiv);
+    
+    modalDiv.append(modalContentDiv);
+    albumViewEl.append(newAlbumButtonEl);
+    albumViewEl.append(modalDiv);
+    mainContainerEl.append(albumViewEl);
+
+
+    submitNewAlbum.addEventListener("click", () => {
+        const newAlbumJson = {
+            "title": newAlbumTitle.value,
+            "artist": newAlbumArtist.value,
+            "imgUrl": newAlbumImage.value,
+            "recordLabel": newAlbumLabel.value,
+            "songs": [],
+            "rating": newAlbumRating.value
+        }
+        fetch("http://localhost:8080/album/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/Json'
+            },
+            body: JSON.stringify(newAlbumJson)
+        })
+        .then(res => res.json())
+        .then(album => {
+            clearChildren(mainContainerEl);
+            displayAlbumsView(mainContainerEl, album);
+        }) 
+        .catch(error => console.error(error));
     })
-    .then(res => res.json())
-    .then(album => {
-        clearChildren(mainContainerEl);
-        displayAlbumsView(mainContainerEl, album);
-    }) 
-    .catch(error => console.error(error));
-})
+
+    var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("newAlbumButton");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 };
 
