@@ -1,0 +1,54 @@
+.songDivEl{
+    background-image: url(/resources/photo-1630096126752-47c50c5f905d\ \(1\).jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+  }
+  
+  .albumArt{
+  display: flex;
+  
+  
+  }
+  .songRating{
+  display:flex;
+  }
+  
+  .songArtist{
+    display:flex;
+  }
+  
+  .songAlbum{
+    display:flex;
+  }
+  
+  .songDuration{
+    display:flex;
+  }
+  
+  .newRating{
+    display:flex;
+    padding-bottom: .5%;
+    margin: .5%;
+    
+  
+  }
+  
+  .submitNewRating{
+    display:flex;
+    
+  }
+  
+  .player{
+    display:flex;
+    
+  }
+  
+  .songCommentUl{
+    display:flex;
+  }
+  
+  .songCommentLi{
+    display:flex;
+  }
