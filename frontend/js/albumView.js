@@ -57,6 +57,9 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     const submitCommentEl = document.createElement("button");
     submitCommentEl.classList.add("submitCommentButton");
     submitCommentEl.innerText = "Post Comment";
+    const postCommentText = document.createElement("h2");
+    postCommentText.classList.add("postComment");
+    postCommentText.innerText ="Post Comment";
 
     const albumInfoDivEl = document.createElement("almubInfoDiv");
     albumInfoDivEl.classList.add("albumInfoDiv");
@@ -70,6 +73,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
 
     const albumFormDivEl = document.createElement("albumFormDivEl")
     albumFormDivEl.classList.add("albumFormDiv")
+    
     albumFormDivEl.append(albumRatingEl);
     albumFormDivEl.append(newRatingEl);
     albumFormDivEl.append(submitNewAlbumRatingEl);
@@ -78,6 +82,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumFormDivEl.append(editAlbumArtistEl);
     albumFormDivEl.append(editAlbumLabelEl);
     albumFormDivEl.append(submitEditEl);
+    albumFormDivEl.append(postCommentText);
     albumFormDivEl.append(commentBoxEl);
     albumFormDivEl.append(submitCommentEl);
     albumDivEl.append(albumFormDivEl);
@@ -234,15 +239,24 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     commentDiv.classList.add("albumCommentDiv");
     const commentUlEl = document.createElement("ul");
     commentUlEl.classList.add("commentUl");
+  
+
+
     
     album.comments.forEach(String => {
         const commentLiEl = document.createElement("li");
         commentLiEl.classList.add("commentLi");
         const commentText = document.createElement("p");
         commentText.innerText = String;
+    
         commentLiEl.append(commentText);
         commentUlEl.append(commentLiEl);
     })
+    // const commentHeader = createElement("h2");
+    // commentHeader.classList.add("commentHeader");
+    // commentHeader.innerText = "Comments";
+
+
 
     newSongDivEl.append(newSongTitleEl);
     newSongDivEl.append(newSongArtistEl);

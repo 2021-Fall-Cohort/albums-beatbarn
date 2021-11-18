@@ -1,5 +1,5 @@
 body{
-    background-color: aqua;
+    background-color: #f6f7bf;
 }
 .albumDiv {
     display: flex;
@@ -82,13 +82,14 @@ body{
 
 }
 
+
 .submitNewRating {
     font-family: 'Special Elite', cursive;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
     border-radius: 10px;
     margin-top: 5px;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 
 }
 .submitCommentButton{
@@ -113,7 +114,7 @@ body{
     transition: 0.3s;
     border-radius: 10px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
 }
 .editAlbumLabel{
     font-family: 'Special Elite', cursive;
@@ -226,13 +227,55 @@ body{
 }
 
 .albumCommentDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    border: 15px;
+    border-color: darkgoldenrod;
+    justify-content: space-around;
+    background-color: rgb(73, 105, 92);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    
 
 }
 
 .commentUl {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    border: 15px;
+    border-color: darkgoldenrod;
+    justify-content: space-around;
+    background-color: #f6f7bf;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    
 
 }
 
 .commentLi {
 
+  display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    border: 15px;
+    border-color: darkgoldenrod;
+    justify-content: space-around;
+    background-color: rgb(73, 105, 92);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    
 }
