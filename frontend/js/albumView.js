@@ -22,7 +22,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     recordLabelEl.innerText = album.recordLabel;
     const albumRatingEl = document.createElement("h2");
     albumRatingEl.classList.add("singleAlbumRating");
-    albumRatingEl.innerText = album.avgRating;
+    albumRatingEl.innerText = album.avgRating + " Stars!";
     const newRatingEl = document.createElement("input");
     newRatingEl.classList.add("newRating");
     newRatingEl.type = "number";
@@ -153,11 +153,12 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
         songTitleEl.innerText = song.title;
         const songDurationEl = document.createElement("h4");
         songDurationEl.classList.add("songDuration");
-        songDurationEl.innerText = song.duration;
+        songDurationEl.innerText = song.duration + " m";
         const songRatingEl = document.createElement("h4");
-        songRatingEl.innerText = song.avgRating;
+        songRatingEl.innerText = song.avgRating + " Stars";
        
         const songDeleteEl = document.createElement("button");
+        songDeleteEl.classList.add("deleteButton")
         songDeleteEl.innerText = "Delete";
 
 
@@ -198,6 +199,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
 
     const newSongDivEl = document.createElement("div");
     newSongDivEl.classList.add("newSongDiv");
+    newSongDivEl.innerText = "Add a Song!"
     const newSongTitleEl = document.createElement("input");
     newSongTitleEl.classList.add("newSongForm");
     newSongTitleEl.type="text";
@@ -242,7 +244,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     newSongDivEl.append(newSongLinkEl);
     newSongDivEl.append(newSongSubmitEl);
     commentDiv.append(commentUlEl);
-    mainContainerEl.append(newSongDivEl);
+    songListDiv.append(newSongDivEl);
     mainContainerEl.append(commentDiv);
 
     newSongSubmitEl.addEventListener("click", () => {

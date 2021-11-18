@@ -6,6 +6,13 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    background-color: goldenrod;
+    margin-top: .8rem;
+    margin-bottom: .8rem;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    font-family: 'Special Elite', cursive;
 
 }
 .newRating{
@@ -23,11 +30,15 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 90%;
     padding-left: .5rem;
     padding-right: .5rem;
     padding-bottom: 0rem;
     background-color: coral;
     font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
     
 }
 .albumFormDiv{
@@ -37,6 +48,10 @@ body{
     align-items: stretch;
 
 }
+.songTitle{
+    padding-right: 2rem;
+}
+
 
 .albumArtist {
 
@@ -63,7 +78,28 @@ body{
 }
 
 .songDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:auto;
+    background-color: maroon;
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
 
+
+}
+.deleteButton{
+    background-color: #8cc5de;
+    margin: .5rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: .9rem;
+    font-family: 'Special Elite', cursive;
+    border-radius: 10rem;
+    box-shadow: 0 4px rgb(58, 68, 124); 
 }
 
 .songList {
@@ -73,6 +109,7 @@ body{
     justify-content: space-around;
     padding: auto;
     align-content: center;
+    
 
 }
 .songLi {
@@ -82,20 +119,32 @@ body{
     align-items: center;
     border: 15px;
     border-color: darkgoldenrod;
-    justify-content: flex-end;
+    justify-content: space-around;
     background-color: rgb(73, 105, 92);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
     
 }
 
 .songDuration {
+    padding-right: 2rem;;
 
 }
 
 .newSongDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
 
 }
 
 .newSongForm {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
 
 }
 
