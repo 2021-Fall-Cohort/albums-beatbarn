@@ -18,7 +18,14 @@ body{
 .newRating{
     display: flex;
     max-width: 20rem;
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
+
 
 .singleAlbumArt {
     display: flex;
@@ -46,6 +53,8 @@ body{
     flex-direction: column;
     align-content: center;
     align-items: stretch;
+    font-family: 'Special Elite', cursive;
+    
 
 }
 .songTitle{
@@ -74,8 +83,65 @@ body{
 }
 
 .submitNewRating {
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
 }
+.submitCommentButton{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.commentBox{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.submitEditButton{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.editAlbumLabel{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+.editAlbumArtist{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.editAlbumTitle {
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
 
 .songDiv {
     display: flex;
@@ -95,7 +161,7 @@ body{
     margin: .5rem;
     width: fit-content;
     margin-left: auto;
-    margin-right: auto;
+    /* margin-right: auto; */
     font-size: .9rem;
     font-family: 'Special Elite', cursive;
     border-radius: 10rem;
@@ -124,6 +190,8 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
     border-radius: 10px;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
     
 }
 

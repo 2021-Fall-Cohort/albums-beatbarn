@@ -32,30 +32,36 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     submitNewAlbumRatingEl.innerText = "Submit Rating";
 
     const editAlbumTitleEl = document.createElement("input");
+    editAlbumTitleEl.classList.add("editAlbumTitle");
     editAlbumTitleEl.type ="text";
     editAlbumTitleEl.placeholder = "Enter New Album Name";
     const editAlbumArtistEl = document.createElement("input");
+    editAlbumArtistEl.classList.add("editAlbumArtist");
     editAlbumArtistEl.type ="text";
     editAlbumArtistEl.placeholder = "Enter New Artist Name";
     const editAlbumLabelEl = document.createElement("input");
+    editAlbumLabelEl.classList.add("editAlbumLabel");
     editAlbumLabelEl.type = "text";
     editAlbumLabelEl.placeholder = "Enter New Record Label";
     const submitEditEl = document.createElement("button");
+    submitEditEl.classList.add("submitEditButton");
     submitEditEl.innerText = "Edit Album";
 
     const commentBoxEl = document.createElement("input");
+    commentBoxEl.classList.add("commentBox");
     commentBoxEl.type = "text";
     commentBoxEl.placeholder = "Enter your comment here";
     const submitCommentEl = document.createElement("button");
+    submitCommentEl.classList.add("submitCommentButton");
     submitCommentEl.innerText = "Post Comment";
 
-    const albumInfoDivEl = document.createElement("almubInfoDiv")
+    const albumInfoDivEl = document.createElement("almubInfoDiv");
     albumInfoDivEl.classList.add("albumInfoDiv");
     albumInfoDivEl.append(albumArtistEl);
     albumInfoDivEl.append(albumTitleEl);
     albumInfoDivEl.append(albumArtEl);
     albumInfoDivEl.append(recordLabelEl);
-    albumDivEl.append(albumInfoDivEl)
+    albumDivEl.append(albumInfoDivEl);
 
    
 
@@ -72,10 +78,6 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumFormDivEl.append(submitCommentEl);
     albumDivEl.append(albumFormDivEl);
      
-    const cowArtEl =document.createElement("img")
-    cowArtEl.classList.add("cowArt")
-    cowArtEl.src = "resources\funcow1.png";
-    cowArtEl.append(albumDivEl)
     mainContainerEl.append(albumDivEl);
 
     submitNewAlbumRatingEl.addEventListener("click", ()=> {
@@ -159,7 +161,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
        
         const songDeleteEl = document.createElement("button");
         songDeleteEl.classList.add("deleteButton")
-        songDeleteEl.innerText = "Delete";
+        songDeleteEl.innerText = "x";
 
 
         songListEl.append(songLiEl);
