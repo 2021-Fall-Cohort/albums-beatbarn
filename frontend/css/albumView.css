@@ -6,7 +6,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-color: goldenrod;
+    background-color: #AB3428;
     margin-top: .8rem;
     margin-bottom: .8rem;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
@@ -41,7 +41,7 @@ body{
     padding-left: .5rem;
     padding-right: .5rem;
     padding-bottom: 0rem;
-    background-color: coral;
+    background-color: #f6f7bf;
     font-family: 'Special Elite', cursive;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
     transition: 0.3s;
@@ -139,6 +139,15 @@ body{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.newSongLink{
+    font-family: 'Special Elite', cursive;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+    transition: 0.3s;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
 
 
 
@@ -148,11 +157,11 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
     width:auto;
-    background-color: maroon;
+    background-color: #f6f7bf;
     font-family: 'Special Elite', cursive;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
-    transition: 0.3s;
-    border-radius: 10px;
+    transition: 0.9s;
+    border-radius: 15px;
 
 
 }

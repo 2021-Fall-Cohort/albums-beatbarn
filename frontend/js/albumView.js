@@ -219,6 +219,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     newSongRatingEl.type = "number";
     newSongRatingEl.placeholder ="Song Rating 1-5";
     const newSongLinkEl = document.createElement("input");
+    newSongLinkEl.classList.add("newSongLink");
     newSongLinkEl.type = "text";
     newSongLinkEl.placeholder = "Paste Embed Link";
     const newSongSubmitEl = document.createElement("button");
