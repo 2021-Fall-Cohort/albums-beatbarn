@@ -31,6 +31,9 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     submitNewAlbumRatingEl.classList.add("submitNewRating");
     submitNewAlbumRatingEl.innerText = "Submit Rating";
 
+    const editAlbumText = document.createElement("h2");
+    editAlbumText.classList.add("editAlbumText");
+    editAlbumText.innerText = "Edit Album";
     const editAlbumTitleEl = document.createElement("input");
     editAlbumTitleEl.classList.add("editAlbumTitle");
     editAlbumTitleEl.type ="text";
@@ -70,6 +73,7 @@ function displayAlbumView(mainContainerEl, album, albumsJson){
     albumFormDivEl.append(albumRatingEl);
     albumFormDivEl.append(newRatingEl);
     albumFormDivEl.append(submitNewAlbumRatingEl);
+    albumFormDivEl.append(editAlbumText);
     albumFormDivEl.append(editAlbumTitleEl);
     albumFormDivEl.append(editAlbumArtistEl);
     albumFormDivEl.append(editAlbumLabelEl);
